@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Olay Günlüğü</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Ayarlar</string>
+    <string name="title_activity_add_event">Add Event</string>
+    <string name="event_delete_message">Olay çöp kutusuna taşındı.</string>
+    <string name="event_add_message">Olay eklendi.</string>
+    <string name="event_text">Olay ayrıntısı</string>
+    <string name="event_add">Olay  Ekle</string>
+    <string name="event_edit">Olay Düzenle</string>
+    <string name="events">Olaylar</string>
+    <string name="trash">Çöp Kutusu</string>
+    <string name="about">Hakkında</string>
+    <string name="edit">Düzenle</string>
+    <string name="delete">Sil</string>
+</resources>
