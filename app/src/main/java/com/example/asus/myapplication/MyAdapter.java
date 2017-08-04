@@ -24,6 +24,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     Activity activity;
     DbManager dbManager;
     AlertDialog alertDialog;
+
+    public final String now = "Şimdi", timeTexts[]  = {
+            "yıl önce",
+            "ay önce",
+            "gün önce",
+            "saat önce",
+            "dakika önce",
+            "saniye önce",
+            "şimdi"
+    };
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -67,7 +77,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         final Event currentEvent = events.get(events.size() - 1 - position);
         holder.text.setText(currentEvent.getText());
-        String date = Util.getSmartTime(new Date(System.currentTimeMillis() - currentEvent.getDate()));
+        String date = Util.getSmartTime(new Date(System.currentTimeMillis() - currentEvent.getDate()), timeTexts, now);
         holder.date.setText(date);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {

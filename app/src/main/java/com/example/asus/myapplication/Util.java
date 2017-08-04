@@ -17,83 +17,26 @@ import java.util.Date;
  * Created by Halit on 01.01.2005.
  */
 public class Util {
-    public static String getSmartTime(Date date){
+
+    public static final String[] timeFormats = {
+            "yyyy",
+            "MM",
+            "dd",
+            "HH",
+            "mm",
+            "ss",
+    };
+
+    public static String getSmartTime(Date date, String timeTexts[], String now){
         long time  = date.getTime();
-        String result = null;
-        /*String syear , smonth, sday, shour, sminute, ssecond;
-
-        syear = (String) DateFormat.format("yyyy", time);
-        smonth = (String) DateFormat.format("MM", time);
-        sday = (String) DateFormat.format("dd", time);
-        shour = (String) DateFormat.format("HH", time);
-        sminute = (String) DateFormat.format("mm", time);
-        ssecond = (String) DateFormat.format("ss", time);*/
-
-        int year = timeFormat("yyyy", time),
-                month = timeFormat("MM", time),
-                day = timeFormat("dd", time),
-                hour = timeFormat("HH", time),
-                minute = timeFormat("mm", time),
-                second = timeFormat("ss", time);
-        /*
-        if(syear == null){
-            year = 0;
-        }else{
-            year =  Integer.parseInt(syear);
-        }
-
-        if(smonth == null){
-            month = 0;
-        }else{
-            month =  Integer.parseInt(smonth);
-        }
-        if(sday == null){
-            day = 0;
-        }else{
-            day =  Integer.parseInt(sday);
-        }
-        if(shour == null){
-            hour = 0;
-        }else{
-            hour =  Integer.parseInt(shour);
-        }
-        if(sminute == null){
-            minute = 0;
-        }else{
-            minute =  Integer.parseInt(sminute);
-        }
-        if(ssecond == null){
-            second = 0;
-        }else{
-            second =  Integer.parseInt(ssecond);
-        }*/
-
-        if(year - timeFormat("yyyy", 0) == 0){
-            if(month - timeFormat("MM", 0) == 0){
-                if(day - timeFormat("dd", 0) == 0){
-                    if(hour - timeFormat("HH", 0)== 0){
-                        if(minute - timeFormat("mm", 0)== 0){
-                            if(second - timeFormat("ss", 0) == 0){
-                                result = "şimdi";
-                            }else{
-                                result = String.valueOf(second) + " saniye önce";
-                            }
-                        }else{
-                            result = String.valueOf(minute) + " dakika önce";
-                        }
-                    }else{
-                        result = String.valueOf(hour) + " saat önce";
-                    }
-                }else{
-                    result = String.valueOf(day) + " gün önce";
-                }
-            }else{
-                result = String.valueOf(month) + " ay önce";
+        int currentTime = 0;
+        for (int i = 0; i < timeFormats.length; i++) {
+            currentTime = timeFormat(timeFormats[i], time);
+            if( currentTime - timeFormat(timeFormats[i], 0) != 0){
+                return String.valueOf(currentTime) + " " + timeTexts[i].trim();
             }
-        }else{
-            result = String.valueOf(year) + " yıl önce";
         }
-        return result;
+        return now;
     }
 
     private static int timeFormat(String format, long time){
